@@ -31,7 +31,7 @@ public sealed class GameModeDaemon : IDisposable
 
     public GameModeDaemon(string coreEnginePath, string configDir)
     {
-        var lang = System.Globalization.CultureInfo.CurrentUITwoLetterISOLanguageName;
+        var lang = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
         _loc = new Localizer(lang == "en" ? "en" : "es");
 
         _core = new CoreClient(coreEnginePath);

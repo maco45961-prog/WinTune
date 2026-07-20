@@ -119,7 +119,7 @@ public sealed class CoreClient : IDisposable
                 return (null, null);
 
             var obj = results[0].Properties.ToDictionary(p => p.Name, p => p.Value);
-            bool? compatible = obj["Compatible"] is PSObject pc && pc.Value is bool pb ? pb : null;
+            bool? compatible = obj["Compatible"] is PSObject pc && pc.BaseObject is bool pb ? pb : null;
             string? risk = obj["Risk"]?.ToString();
             return (compatible, risk);
         }
