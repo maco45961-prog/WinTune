@@ -1,4 +1,4 @@
-name: Release — Core Engine
+name: Release - Core Engine
 
 on:
   push:
@@ -6,9 +6,6 @@ on:
 
 permissions:
   contents: write
-
-env:
-  DOTNET_VERSION: '8.0.x'
 
 jobs:
   validate:
@@ -66,7 +63,6 @@ jobs:
           $source = "winoptimizer-core"
           $zipName = "winoptimizer-core-v${version}.zip"
 
-          # Remove test and CI files from package
           $tempDir = "core-staging"
           Copy-Item -Path $source -Destination $tempDir -Recurse -Force
           Remove-Item -Path "$tempDir/.github" -Recurse -Force -ErrorAction SilentlyContinue
@@ -101,18 +97,3 @@ jobs:
           generate_release_notes: true
           files: winoptimizer-core-v*.zip
           name: "WinOptimizer Core ${{ github.ref_name }}"
-          body: |
-            ## WinOptimizer Core ${{ github.ref_name }}
-
-            PowerShell module — core engine for the WinOptimizer ecosystem.
-
-            ### Installation
-            1. Download `winoptimizer-core-v*.zip`
-            2. Extract to a folder (e.g. `C:\winoptimizer-core`)
-            3. Set the environment variable `WINOPTIMIZER_CORE_PATH` to that folder
-            4. Or place it as a sibling to any WinOptimizer app
-
-            ### Exported Functions
-            `Get-AvailableTweaks`, `Invoke-Tweak`, `Undo-Tweak`, `Apply-Profile`,
-            `New-SystemBackup`, `Restore-SystemBackup`, `Test-VanguardInstalled`,
-            `Test-VBSCompatibleTweak`, `Update-SystemState`, `Write-TweakLog`

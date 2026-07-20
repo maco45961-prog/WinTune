@@ -1,4 +1,4 @@
-name: Release — WinSetupWizard
+name: Release - WinSetupWizard
 
 on:
   push:

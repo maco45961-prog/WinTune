@@ -1,4 +1,4 @@
-name: Release — WinBenchmark
+name: Release - WinBenchmark
 
 on:
   push:

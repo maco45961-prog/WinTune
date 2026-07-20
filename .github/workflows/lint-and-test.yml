@@ -1,4 +1,4 @@
-name: Lint & Test
+name: Lint and Test
 
 on:
   push:
@@ -7,17 +7,15 @@ on:
     branches: [main]
 
 jobs:
-  # ─── Core: PSScriptAnalyzer ─────────────────────────────
   core-lint:
-    name: Core — PSScriptAnalyzer
+    name: Core - PSScriptAnalyzer
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Install PSScriptAnalyzer
         shell: pwsh
-        run: |
-          Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser -SkipPublisherCheck
+        run: Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser -SkipPublisherCheck
 
       - name: Run PSScriptAnalyzer
         shell: pwsh
@@ -32,17 +30,15 @@ jobs:
           }
           Write-Output "PSScriptAnalyzer: 0 issues"
 
-  # ─── Core: Pester Tests ─────────────────────────────────
   core-test:
-    name: Core — Pester Tests
+    name: Core - Pester Tests
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Install Pester
         shell: pwsh
-        run: |
-          Install-Module -Name Pester -Force -Scope CurrentUser -SkipPublisherCheck -MinimumVersion 5.0
+        run: Install-Module -Name Pester -Force -Scope CurrentUser -SkipPublisherCheck -MinimumVersion 5.0
 
       - name: Run Pester Tests
         shell: pwsh
@@ -62,9 +58,8 @@ jobs:
           name: core-test-results
           path: winoptimizer-core/test-results.xml
 
-  # ─── Core: Module Validation ────────────────────────────
   core-validate:
-    name: Core — Module Validation
+    name: Core - Module Validation
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -76,7 +71,7 @@ jobs:
           Test-ModuleManifest -Path ./WinOptimizer.Core.psd1
           Write-Output "Module manifest is valid"
 
-      - name: Import Module & Verify Exports
+      - name: Import Module and Verify Exports
         shell: pwsh
         working-directory: winoptimizer-core
         run: |
@@ -88,9 +83,8 @@ jobs:
             exit 1
           }
 
-  # ─── .NET Apps: Build Check ─────────────────────────────
   apps-build:
-    name: .NET Apps — Build
+    name: .NET Apps - Build
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -116,17 +110,17 @@ jobs:
           dotnet restore winsetupwizard-app/WinSetupWizard.App.csproj
           dotnet restore wingamemodedaemon-app/WinGameModeDaemon.csproj
 
-      - name: Build — WinOptimizer
+      - name: Build WinOptimizer
         run: dotnet build winoptimizer-app/WinOptimizer.App.csproj -c Release --no-restore
 
-      - name: Build — WinBenchmark
+      - name: Build WinBenchmark
         run: dotnet build winbenchmark-app/WinBenchmark.App.csproj -c Release --no-restore
 
-      - name: Build — WinNetTools
+      - name: Build WinNetTools
         run: dotnet build winnettools-app/WinNetTools.App.csproj -c Release --no-restore
 
-      - name: Build — WinSetupWizard
+      - name: Build WinSetupWizard
         run: dotnet build winsetupwizard-app/WinSetupWizard.App.csproj -c Release --no-restore
 
-      - name: Build — WinGameModeDaemon
+      - name: Build WinGameModeDaemon
         run: dotnet build wingamemodedaemon-app/WinGameModeDaemon.csproj -c Release --no-restore

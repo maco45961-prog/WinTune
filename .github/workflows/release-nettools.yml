@@ -1,4 +1,4 @@
-name: Release — WinNetTools
+name: Release - WinNetTools
 
 on:
   push:
