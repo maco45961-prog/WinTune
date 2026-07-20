@@ -1,0 +1,15 @@
+{
+  "id": "enable-hardware-gpu-scheduling",
+  "name": "Habilitar Programación de GPU por Hardware",
+  "description": "Activa la aceleración de programación de GPU por hardware (HAGS), permitiendo que la GPU gestione su propia memoria de video para reducir latencia.",
+  "category": "gaming",
+  "commands": {
+    "apply": "Set-ItemProperty -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers' -Name 'HwSchMode' -Value 2 -Type DWord",
+    "revert": "Set-ItemProperty -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers' -Name 'HwSchMode' -Value 1 -Type DWord"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": true,
+  "tags": ["gaming", "gpu", "graphics", "latency", "performance"]
+}

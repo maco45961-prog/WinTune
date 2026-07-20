@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://winoptimizer-core/schemas/profile.schema.json",
+  "title": "Profile Definition",
+  "description": "Schema for a profile definition that groups multiple tweak IDs.",
+  "type": "object",
+  "required": ["name", "description", "target_audience", "risk_level", "tweak_ids"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique profile identifier (matches filename without .json)."
+    },
+    "description": {
+      "type": "string",
+      "description": "What this profile does and who it's for."
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Who this profile is intended for."
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Aggregate risk level of all tweaks in this profile."
+    },
+    "tweak_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Ordered list of tweak IDs to apply sequentially."
+    },
+    "estimated_restart_required": {
+      "type": "boolean",
+      "description": "Whether any tweak in this profile requires a restart."
+    },
+    "vanguard_compatible": {
+      "type": "boolean",
+      "description": "Whether all tweaks in this profile are Vanguard-compatible."
+    }
+  }
+}

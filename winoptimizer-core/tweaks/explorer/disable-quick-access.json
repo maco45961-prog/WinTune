@@ -1,0 +1,15 @@
+{
+  "id": "disable-quick-access",
+  "name": "Deshabilitar Acceso Rápido en Explorer",
+  "description": "Desactiva la página de Acceso Rápido en Explorer y muestra 'Este equipo' por defecto. Reduce el rastreo de archivos recientes.",
+  "category": "explorer",
+  "commands": {
+    "apply": "Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name 'LaunchTo' -Value 1 -Type DWord; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer' -Name 'ShowRecent' -Value 0 -Type DWord; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer' -Name 'ShowFrequent' -Value 0 -Type DWord",
+    "revert": "Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name 'LaunchTo' -Value 2 -Type DWord; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer' -Name 'ShowRecent' -Value 1 -Type DWord; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer' -Name 'ShowFrequent' -Value 1 -Type DWord"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["explorer", "privacy", "quick-access", "ui"]
+}

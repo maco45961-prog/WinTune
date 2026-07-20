@@ -1,0 +1,94 @@
+<Window x:Class="WinOptimizer.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{StaticResource AppTitle}"
+        Width="1100" Height="750"
+        MinWidth="900" MinHeight="600"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BgPrimaryBrush}"
+        Foreground="{StaticResource TextPrimaryBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ═══ Sidebar Navigation ═══ -->
+        <Border Grid.Column="0" Background="{StaticResource BgSecondaryBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,1,0">
+            <DockPanel>
+                <!-- Logo / Brand -->
+                <StackPanel DockPanel.Dock="Top" Margin="20,24,20,32">
+                    <TextBlock Text="⚡ WinOptimizer" FontSize="20" FontWeight="Bold"
+                               Foreground="{StaticResource AccentPrimaryBrush}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Core Engine v1.0" FontSize="11"
+                               Foreground="{StaticResource TextMutedBrush}" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <!-- Vanguard Warning -->
+                <Border x:Name="VanguardBanner" DockPanel.Dock="Top" Background="#3a2020" BorderBrush="{StaticResource AccentRedBrush}"
+                        BorderThickness="1" CornerRadius="6" Margin="12,0,12,12" Padding="10" Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBlock Text="{StaticResource VanguardTitle}" FontWeight="Bold" FontSize="12"
+                                   Foreground="{StaticResource AccentRedBrush}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{StaticResource VanguardExcluded}" FontSize="10"
+                                   Foreground="{StaticResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Nav Buttons -->
+                <StackPanel DockPanel.Dock="Bottom" Margin="12,12">
+                    <TextBlock Text="v1.0.0 — MIT License" FontSize="10"
+                               Foreground="{StaticResource TextMutedBrush}" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,8,0,0">
+                    <RadioButton x:Name="NavHome" Content="{StaticResource NavHome}" GroupName="Nav"
+                                 Style="{StaticResource NavButtonStyle}" IsChecked="True"
+                                 Click="NavHome_Click"/>
+                    <RadioButton x:Name="NavCustom" Content="{StaticResource NavCustom}" GroupName="Nav"
+                                 Style="{StaticResource NavButtonStyle}"
+                                 Click="NavCustom_Click"/>
+                    <RadioButton x:Name="NavLog" Content="{StaticResource NavLog}" GroupName="Nav"
+                                 Style="{StaticResource NavButtonStyle}"
+                                 Click="NavLog_Click"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- ═══ Content Area ═══ -->
+        <ContentControl Grid.Column="1" x:Name="ContentArea" Margin="0">
+            <ContentControl.Content>
+                <views:HomeView x:Name="HomeViewControl"/>
+            </ContentControl.Content>
+        </ContentControl>
+    </Grid>
+
+    <Window.Resources>
+        <!-- Nav Button Style -->
+        <Style x:Key="NavButtonStyle" TargetType="RadioButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="Bd" Background="Transparent" Padding="16,10" CornerRadius="6" Margin="8,2">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#2a2a5a"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="{StaticResource BgCardBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="0,1"/>
+        </Style>
+    </Window.Resources>
+</Window>

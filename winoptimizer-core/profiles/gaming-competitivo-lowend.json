@@ -1,0 +1,15 @@
+{
+  "name": "gaming-competitivo-lowend",
+  "description": "Perfil optimizado para gaming competitivo en hardware de gama baja. Activa HAGS, desactiva Nagle, reduce overhead visual y de servicios.",
+  "target_audience": "Gamers con PC de gama baja o media",
+  "risk_level": "medium",
+  "tweak_ids": [
+    "disable-telemetry",
+    "disable-transparency-effects",
+    "disable-windows-search-indexer",
+    "disable-nagle-algorithm",
+    "enable-hardware-gpu-scheduling"
+  ],
+  "estimated_restart_required": true,
+  "vanguard_compatible": true
+}

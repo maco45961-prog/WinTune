@@ -1,0 +1,15 @@
+{
+  "id": "hide-file-extension",
+  "name": "Mostrar Extensiones de Archivo",
+  "description": "Fuerza la visualización de extensiones de archivo en Explorer, evitando malware que se disfraza con doble extensión.",
+  "category": "explorer",
+  "commands": {
+    "apply": "Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name 'HideFileExt' -Value 0 -Type DWord",
+    "revert": "Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name 'HideFileExt' -Value 1 -Type DWord"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["explorer", "security", "file-extensions", "ui"]
+}

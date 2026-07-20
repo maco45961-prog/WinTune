@@ -1,0 +1,90 @@
+<Page x:Class="WinBenchmark.UI.Views.CompareView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgPrimaryBrush}"
+      Foreground="{StaticResource TextPrimaryBrush}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24">
+            <TextBlock Text="{StaticResource Compare}" FontSize="22" FontWeight="Bold" Margin="0,0,0,16"/>
+
+            <Grid Margin="0,0,0,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="BeforeCombo" Background="{StaticResource BgTertiaryBrush}" Foreground="{StaticResource TextPrimaryBrush}"
+                          BorderBrush="{StaticResource BorderBrush}" Padding="4" FontSize="13"/>
+                <TextBlock Grid.Column="1" Text="{StaticResource Compare}" Foreground="{StaticResource TextMutedBrush}" VerticalAlignment="Center" Margin="8,0"/>
+                <ComboBox Grid.Column="2" x:Name="AfterCombo" Background="{StaticResource BgTertiaryBrush}" Foreground="{StaticResource TextPrimaryBrush}"
+                          BorderBrush="{StaticResource BorderBrush}" Padding="4" FontSize="13"/>
+            </Grid>
+
+            <Button Content="{StaticResource Compare}" Style="{StaticResource PrimaryButton}" Click="RunCompare" HorizontalAlignment="Left" IsEnabled="False" Margin="0,0,0,16"/>
+
+            <!-- Results -->
+            <Border x:Name="CompareResults" Background="{StaticResource BgCardBrush}" CornerRadius="8" Padding="16" Visibility="Collapsed">
+                <StackPanel>
+                    <TextBlock x:Name="CompareSummary" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource AccentBrush}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" FontWeight="Bold" Text="Métrica"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Bold" Text="{StaticResource Before}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2" FontWeight="Bold" Text="{StaticResource After}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="3" FontWeight="Bold" Text="{StaticResource Delta}"/>
+
+                        <TextBlock Grid.Row="1" Text="{StaticResource AvgFps}" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="DfpsBefore" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="2" x:Name="DfpsAfter" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="3" x:Name="DfpsDelta" Margin="0,4,0,0" FontWeight="Bold"/>
+
+                        <TextBlock Grid.Row="2" Text="{StaticResource Low1Percent}" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="Dlow1Before" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="2" Grid.Column="2" x:Name="Dlow1After" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="2" Grid.Column="3" x:Name="Dlow1Delta" Margin="0,4,0,0" FontWeight="Bold"/>
+
+                        <TextBlock Grid.Row="3" Text="{StaticResource Low01Percent}" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="Dlow01Before" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="2" x:Name="Dlow01After" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="3" x:Name="Dlow01Delta" Margin="0,4,0,0" FontWeight="Bold"/>
+
+                        <TextBlock Grid.Row="4" Text="{StaticResource FrameTimeMs}" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" x:Name="DftBefore" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="4" Grid.Column="2" x:Name="DftAfter" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="4" Grid.Column="3" x:Name="DftDelta" Margin="0,4,0,0" FontWeight="Bold"/>
+
+                        <TextBlock Grid.Row="5" Text="{StaticResource PingMs}" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="5" Grid.Column="1" x:Name="DpingBefore" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="5" Grid.Column="2" x:Name="DpingAfter" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="5" Grid.Column="3" x:Name="DpingDelta" Margin="0,4,0,0" FontWeight="Bold"/>
+
+                        <TextBlock Grid.Row="6" Text="{StaticResource CpuUsage}" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="6" Grid.Column="1" x:Name="DcpuBefore" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="6" Grid.Column="2" x:Name="DcpuAfter" Margin="0,4,0,0"/>
+                        <TextBlock Grid.Row="6" Grid.Column="3" x:Name="DcpuDelta" Margin="0,4,0,0" FontWeight="Bold"/>
+                    </Grid>
+
+                    <TextBlock x:Name="StateChangeText" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,12,0,0" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+            <TextBlock x:Name="NoSelectionText" Text="{StaticResource SelectTwoSessions}" Foreground="{StaticResource TextMutedBrush}" Margin="0,12,0,0"/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

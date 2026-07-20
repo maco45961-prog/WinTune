@@ -1,0 +1,89 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WinOptimizer.UI">
+
+    <!-- App -->
+    <system:String x:Key="AppTitle">WinOptimizer</system:String>
+
+    <!-- Navigation -->
+    <system:String x:Key="NavHome">Home</system:String>
+    <system:String x:Key="NavCustom">Custom</system:String>
+    <system:String x:Key="NavLog">Log</system:String>
+
+    <!-- Home -->
+    <system:String x:Key="HomeTitle">Choose an optimization profile</system:String>
+    <system:String x:Key="HomeSubtitle">Each profile applies a predefined set of tweaks. Select one or go to Custom mode to pick individual tweaks.</system:String>
+    <system:String x:Key="SelectProfile">Select</system:String>
+    <system:String x:Key="ProfileSelected">Selected</system:String>
+
+    <!-- Profile Cards -->
+    <system:String x:Key="ProfileDebloatStd">Standard Debloat</system:String>
+    <system:String x:Key="ProfileDebloatStdDesc">Disables telemetry, Cortana, unnecessary services and improves basic privacy. Safe for daily use.</system:String>
+    <system:String x:Key="ProfileDebloatStdTarget">General users</system:String>
+
+    <system:String x:Key="ProfileDebloatAggr">Aggressive Debloat</system:String>
+    <system:String x:Key="ProfileDebloatAggrDesc">Everything in standard plus advanced services, scheduled tasks and before/after comparison.</system:String>
+    <system:String x:Key="ProfileDebloatAggrTarget">Advanced users</system:String>
+
+    <system:String x:Key="ProfileGamingLow">Competitive Gaming Low-End</system:String>
+    <system:String x:Key="ProfileGamingLowDesc">Maximum power, timer resolution, Game Bar off, optimized network, low RAM mode.</system:String>
+    <system:String x:Key="ProfileGamingLowTarget">Gamers with low/mid-end PCs</system:String>
+
+    <system:String x:Key="ProfileCustom">Custom</system:String>
+    <system:String x:Key="ProfileCustomDesc">Pick exactly which tweaks to apply from the full catalog.</system:String>
+    <system:String x:Key="ProfileCustomTarget">Advanced users</system:String>
+
+    <!-- Custom View -->
+    <system:String x:Key="CustomTitle">Tweak Catalog</system:String>
+    <system:String x:Key="SearchPlaceholder">Search tweaks...</system:String>
+    <system:String x:Key="SelectedCount"> selected</system:String>
+    <system:String x:Key="ApplySelection">Apply selection</system:String>
+    <system:String x:Key="SelectAll">Select all</system:String>
+    <system:String x:Key="DeselectAll">Deselect all</system:String>
+
+    <!-- Risk Badges -->
+    <system:String x:Key="RiskLow">Low</system:String>
+    <system:String x:Key="RiskMedium">Medium</system:String>
+    <system:String x:Key="RiskHigh">High</system:String>
+    <system:String x:Key="Reversible">Reversible</system:String>
+    <system:String x:Key="RequiresRestart">Requires restart</system:String>
+    <system:String x:Key="VanguardIncompatible">Incompatible with Vanguard</system:String>
+
+    <!-- Confirmation Modal -->
+    <system:String x:Key="ConfirmTitle">Confirm changes</system:String>
+    <system:String x:Key="ConfirmMessage">You are about to apply the following changes:</system:String>
+    <system:String x:Key="ConfirmRestorePoint">A system restore point will be created automatically.</system:String>
+    <system:String x:Key="ConfirmChanges">{0} tweaks will be applied</system:String>
+    <system:String x:Key="ConfirmRestart">Requires restart: Yes</system:String>
+    <system:String x:Key="ConfirmApply">Apply</system:String>
+    <system:String x:Key="ConfirmCancel">Cancel</system:String>
+
+    <!-- Results / Log -->
+    <system:String x:Key="LogTitle">Session Log</system:String>
+    <system:String x:Key="LogEmpty">No actions in this session.</system:String>
+    <system:String x:Key="UndoAll">Undo all</system:String>
+    <system:String x:Key="UndoTweak">Undo</system:String>
+    <system:String x:Key="LogApplied">Applied</system:String>
+    <system:String x:Key="LogReverted">Reverted</system:String>
+    <system:String x:Key="LogError">Error</system:String>
+    <system:String x:Key="LogTime">Time</system:String>
+    <system:String x:Key="LogTweak">Tweak</system:String>
+    <system:String x:Key="LogStatus">Status</system:String>
+
+    <!-- Vanguard Warning -->
+    <system:String x:Key="VanguardTitle">⚠ Vanguard Detected</system:String>
+    <system:String x:Key="VanguardMessage">Riot Vanguard (anti-cheat) was detected on this system. Some tweaks may be incompatible with Vanguard and cause issues with Vanguard or Valorant.</system:String>
+    <system:String x:Key="VanguardExcluded">Excluded from Gaming profile for Vanguard compatibility.</system:String>
+
+    <!-- General -->
+    <system:String x:Key="Loading">Loading...</system:String>
+    <system:String x:Key="Error">Error</system:String>
+    <system:String x:Key="Success">Success</system:String>
+    <system:String x:Key="RestartRequired">Restart required</system:String>
+    <system:String x:Key="RestartMessage">Changes require a restart to take full effect. Would you like to restart now?</system:String>
+    <system:String x:Key="Yes">Yes</system:String>
+    <system:String x:Key="No">No</system:String>
+    <system:String x:Key="Ok">OK</system:String>
+    <system:String x:Key="Close">Close</system:String>
+
+</ResourceDictionary>

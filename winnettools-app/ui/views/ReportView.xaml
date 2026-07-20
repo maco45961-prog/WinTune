@@ -1,0 +1,27 @@
+<Page x:Class="WinNetTools.UI.Views.ReportView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgPrimaryBrush}"
+      Foreground="{StaticResource TextPrimaryBrush}">
+    <StackPanel Margin="24">
+        <Grid Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{StaticResource Report}" FontSize="22" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" x:Name="GenerateBtn" Content="{StaticResource GenerateReport}" Style="{StaticResource PrimaryButton}" Click="GenerateReport" IsEnabled="True"/>
+        </Grid>
+
+        <TextBlock x:Name="StatusText" Foreground="{StaticResource SuccessBrush}" Margin="0,0,0,8" Visibility="Collapsed"/>
+
+        <Border Background="{StaticResource BgCardBrush}" CornerRadius="8" Padding="16">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="500">
+                <TextBlock x:Name="ReportPreview" Text="Haz clic en 'Generar Reporte' para crear un diagnóstico completo." 
+                           Foreground="{StaticResource TextSecondaryBrush}" 
+                           FontFamily="Consolas" FontSize="12"
+                           TextWrapping="Wrap"/>
+            </ScrollViewer>
+        </Border>
+    </StackPanel>
+</Page>

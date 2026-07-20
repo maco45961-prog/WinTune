@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://winoptimizer-core/schemas/system-state.schema.json",
+  "title": "System State",
+  "description": "Shared state file consumed by all apps in the WinOptimizer ecosystem. This is the contract between the Core Engine and client applications.",
+  "type": "object",
+  "required": ["version", "last_updated", "active_tweaks", "tweak_history", "system_snapshot"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema version for compatibility tracking."
+    },
+    "last_updated": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of last modification."
+    },
+    "active_tweaks": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of tweak IDs currently applied. Any client app can read this to know the system state."
+    },
+    "tweak_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tweak_id", "action", "timestamp"],
+        "properties": {
+          "tweak_id": { "type": "string" },
+          "action": { "type": "string", "enum": ["apply", "revert"] },
+          "timestamp": { "type": "string", "format": "date-time" }
+        }
+      },
+      "description": "Chronological log of all tweak apply/revert operations (last 500)."
+    },
+    "profile_applied": {
+      "type": ["string", "null"],
+      "description": "Name of the last profile applied, or null if tweaks were applied individually."
+    },
+    "system_snapshot": {
+      "type": "object",
+      "description": "Basic hardware/software snapshot for benchmark and optimization decisions.",
+      "properties": {
+        "hostname": {
+          "type": "string",
+          "description": "Machine hostname."
+        },
+        "os_version": {
+          "type": "string",
+          "description": "Windows version string."
+        },
+        "total_ram_gb": {
+          "type": "number",
+          "description": "Total installed RAM in GB."
+        },
+        "cpu_name": {
+          "type": "string",
+          "description": "Processor name as reported by WMI."
+        },
+        "vanguard_installed": {
+          "type": "boolean",
+          "description": "Whether Riot Vanguard anti-cheat is detected."
+        },
+        "vbs_enabled": {
+          "type": "boolean",
+          "description": "Whether Virtualization-Based Security (VBS) is enabled."
+        }
+      }
+    }
+  }
+}

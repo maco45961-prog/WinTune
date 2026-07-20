@@ -1,0 +1,15 @@
+{
+  "id": "optimize-dns",
+  "name": "Optimizar Configuración DNS",
+  "description": "Configura DNS público rápido (Cloudflare 1.1.1.1) y habilita DNS over HTTPS para mejorar velocidad y privacidad en resolución de nombres.",
+  "category": "network",
+  "commands": {
+    "apply": "Set-DnsClientServerAddress -InterfaceAlias (Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | Select-Object -ExpandProperty Name) -ServerAddresses ('1.1.1.1','1.0.0.1')",
+    "revert": "Set-DnsClientServerAddress -InterfaceAlias (Get-NetAdapter | Where-Object {$_.Status -eq 'Up'} | Select-Object -ExpandProperty Name) -ResetServerAddresses"
+  },
+  "risk": "medium",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["network", "dns", "privacy", "performance"]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "disable-sysmain",
+  "name": "Deshabilitar SysMain (Superfetch)",
+  "description": "Deshabilita el servicio SysMain (antes Superfetch) que precarga apps en RAM. Beneficioso en SSDs para reducir escrituras innecesarias.",
+  "category": "services",
+  "commands": {
+    "apply": "Stop-Service -Name 'SysMain' -Force -ErrorAction SilentlyContinue; Set-Service -Name 'SysMain' -StartupType Disabled",
+    "revert": "Set-Service -Name 'SysMain' -StartupType Automatic; Start-Service -Name 'SysMain' -ErrorAction SilentlyContinue"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["services", "memory", "ssd", "performance"]
+}

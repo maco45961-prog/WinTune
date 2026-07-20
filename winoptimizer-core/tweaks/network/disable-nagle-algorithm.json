@@ -1,0 +1,15 @@
+{
+  "id": "disable-nagle-algorithm",
+  "name": "Deshabilitar Algoritmo de Nagle",
+  "description": "Deshabilita el algoritmo de Nagle en todas las interfaces de red, reduciendo latencia en tiempo real. Recomendado para gaming competitivo y VoIP.",
+  "category": "network",
+  "commands": {
+    "apply": "$interfaces = Get-ChildItem -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces'; foreach ($iface in $interfaces) { Set-ItemProperty -Path $iface.PSPath -Name 'TcpAckFrequency' -Value 1 -Type DWord -ErrorAction SilentlyContinue; Set-ItemProperty -Path $iface.PSPath -Name 'TCPNoDelay' -Value 1 -Type DWord -ErrorAction SilentlyContinue }; Set-ItemProperty -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters' -Name 'TcpAckFrequency' -Value 1 -Type DWord; Set-ItemProperty -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters' -Name 'TCPNoDelay' -Value 1 -Type DWord",
+    "revert": "$interfaces = Get-ChildItem -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces'; foreach ($iface in $interfaces) { Remove-ItemProperty -Path $iface.PSPath -Name 'TcpAckFrequency' -ErrorAction SilentlyContinue; Remove-ItemProperty -Path $iface.PSPath -Name 'TCPNoDelay' -ErrorAction SilentlyContinue }; Remove-ItemProperty -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters' -Name 'TcpAckFrequency' -ErrorAction SilentlyContinue; Remove-ItemProperty -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters' -Name 'TCPNoDelay' -ErrorAction SilentlyContinue"
+  },
+  "risk": "medium",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": true,
+  "tags": ["network", "latency", "nagle", "gaming", "tcp"]
+}

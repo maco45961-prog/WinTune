@@ -1,0 +1,30 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+
+    <s:String x:Key="AppTitle">WinBenchmark — Rendimiento</s:String>
+    <s:String x:Key="Dashboard">Panel</s:String>
+    <s:String x:Key="ActiveSession">Sesión Activa</s:String>
+    <s:String x:Key="Compare">Comparar</s:String>
+    <s:String x:Key="History">Historial</s:String>
+    <s:String x:Key="StartBenchmark">Iniciar Benchmark</s:String>
+    <s:String x:Key="StopBenchmark">Detener</s:String>
+    <s:String x:Key="DurationSeconds">Duración (segundos)</s:String>
+    <s:String x:Key="TargetProcess">Proceso a capturar (ej. VALORANT)</s:String>
+    <s:String x:Key="NoSessions">No hay sesiones aún. ¡Haz clic en "Sesión Activa" para empezar!</s:String>
+    <s:String x:Key="Before">Antes</s:String>
+    <s:String x:Key="After">Después</s:String>
+    <s:String x:Key="Delta">Delta</s:String>
+    <s:String x:Key="SelectTwoSessions">Selecciona dos sesiones para comparar</s:String>
+    <s:String x:Key="AvgFps">FPS Prom</s:String>
+    <s:String x:Key="Low1Percent">1% Low</s:String>
+    <s:String x:Key="Low01Percent">0.1% Low</s:String>
+    <s:String x:Key="FrameTimeMs">Frame Time (ms)</s:String>
+    <s:String x:Key="CpuUsage">CPU</s:String>
+    <s:String x:Key="RamUsage">RAM</s:String>
+    <s:String x:Key="PingMs">Ping (ms)</s:String>
+    <s:String x:Key="JitterMs">Jitter (ms)</s:String>
+    <s:String x:Key="GenerateReport">Exportar como JSON</s:String>
+    <s:String x:Key="ReportSaved">Reporte guardado en:</s:String>
+
+</ResourceDictionary>

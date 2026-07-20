@@ -1,0 +1,156 @@
+<UserControl x:Class="WinOptimizer.UI.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="40,32">
+        <StackPanel MaxWidth="900" HorizontalAlignment="Center">
+
+            <!-- Header -->
+            <TextBlock Text="{StaticResource HomeTitle}" FontSize="28" FontWeight="Bold"
+                       Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,8"/>
+            <TextBlock Text="{StaticResource HomeSubtitle}" FontSize="14"
+                       Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,32"
+                       TextWrapping="Wrap"/>
+
+            <!-- Profile Cards -->
+            <UniformGrid Columns="2" Margin="0,0,0,24">
+
+                <!-- Debloat Estándar -->
+                <Border x:Name="CardStd" Style="{StaticResource ProfileCardStyle}" Margin="0,0,8,8">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBlock Text="🛡" FontSize="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="{StaticResource ProfileDebloatStd}" FontSize="18" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextPrimaryBrush}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <TextBlock Text="{StaticResource ProfileDebloatStdDesc}" FontSize="12"
+                                   Foreground="{StaticResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+                        <TextBlock Text="{StaticResource ProfileDebloatStdTarget}" FontSize="11"
+                                   Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,12"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Background="#1a3a2a" CornerRadius="4" Padding="8,3" Margin="0,0,6,0">
+                                <TextBlock Text="Riesgo: Bajo" FontSize="10" Foreground="{StaticResource AccentGreenBrush}"/>
+                            </Border>
+                            <Border Background="#1a3a2a" CornerRadius="4" Padding="8,3">
+                                <TextBlock Text="5 tweaks" FontSize="10" Foreground="{StaticResource TextSecondaryBrush}"/>
+                            </Border>
+                        </StackPanel>
+                        <Button Content="{StaticResource SelectProfile}" Style="{StaticResource PrimaryButtonStyle}"
+                                Margin="0,16,0,0" Click="SelectProfile_Click" Tag="debloat-estandar"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Debloat Agresivo -->
+                <Border x:Name="CardAggr" Style="{StaticResource ProfileCardStyle}" Margin="8,0,0,8">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBlock Text="🔥" FontSize="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="{StaticResource ProfileDebloatAggr}" FontSize="18" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextPrimaryBrush}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <TextBlock Text="{StaticResource ProfileDebloatAggrDesc}" FontSize="12"
+                                   Foreground="{StaticResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+                        <TextBlock Text="{StaticResource ProfileDebloatAggrTarget}" FontSize="11"
+                                   Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,12"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Background="#3a3a1a" CornerRadius="4" Padding="8,3" Margin="0,0,6,0">
+                                <TextBlock Text="Riesgo: Medio" FontSize="10" Foreground="{StaticResource AccentYellowBrush}"/>
+                            </Border>
+                            <Border Background="#1a3a2a" CornerRadius="4" Padding="8,3">
+                                <TextBlock Text="6 tweaks" FontSize="10" Foreground="{StaticResource TextSecondaryBrush}"/>
+                            </Border>
+                        </StackPanel>
+                        <Button Content="{StaticResource SelectProfile}" Style="{StaticResource PrimaryButtonStyle}"
+                                Margin="0,16,0,0" Click="SelectProfile_Click" Tag="debloat-agresivo"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Gaming Low-End -->
+                <Border x:Name="CardGaming" Style="{StaticResource ProfileCardStyle}" Margin="0,0,8,0">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBlock Text="🎮" FontSize="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="{StaticResource ProfileGamingLow}" FontSize="18" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextPrimaryBrush}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <TextBlock Text="{StaticResource ProfileGamingLowDesc}" FontSize="12"
+                                   Foreground="{StaticResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+                        <TextBlock Text="{StaticResource ProfileGamingLowTarget}" FontSize="11"
+                                   Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,12"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Background="#3a3a1a" CornerRadius="4" Padding="8,3" Margin="0,0,6,0">
+                                <TextBlock Text="Riesgo: Medio" FontSize="10" Foreground="{StaticResource AccentYellowBrush}"/>
+                            </Border>
+                            <Border Background="#1a3a2a" CornerRadius="4" Padding="8,3">
+                                <TextBlock Text="5 tweaks" FontSize="10" Foreground="{StaticResource TextSecondaryBrush}"/>
+                            </Border>
+                        </StackPanel>
+                        <Button Content="{StaticResource SelectProfile}" Style="{StaticResource PrimaryButtonStyle}"
+                                Margin="0,16,0,0" Click="SelectProfile_Click" Tag="gaming-competitivo-lowend"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Personalizado -->
+                <Border x:Name="CardCustom" Style="{StaticResource ProfileCardStyle}" Margin="8,0,0,0">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                            <TextBlock Text="⚙" FontSize="24" VerticalAlignment="Center"/>
+                            <TextBlock Text="{StaticResource ProfileCustom}" FontSize="18" FontWeight="SemiBold"
+                                       Foreground="{StaticResource TextPrimaryBrush}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <TextBlock Text="{StaticResource ProfileCustomDesc}" FontSize="12"
+                                   Foreground="{StaticResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+                        <TextBlock Text="{StaticResource ProfileCustomTarget}" FontSize="11"
+                                   Foreground="{StaticResource TextMutedBrush}" Margin="0,0,0,12"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Background="#1a3a2a" CornerRadius="4" Padding="8,3" Margin="0,0,6,0">
+                                <TextBlock Text="18 tweaks" FontSize="10" Foreground="{StaticResource TextSecondaryBrush}"/>
+                            </Border>
+                        </StackPanel>
+                        <Button Content="{StaticResource SelectProfile}" Style="{StaticResource PrimaryButtonStyle}"
+                                Margin="0,16,0,0" Click="GoCustom_Click"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+        </StackPanel>
+    </ScrollViewer>
+
+    <UserControl.Resources>
+        <Style x:Key="ProfileCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource BgCardBrush}"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource AccentPrimaryBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Padding" Value="20,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}"
+                                CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.85"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+</UserControl>

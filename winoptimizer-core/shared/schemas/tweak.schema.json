@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://winoptimizer-core/schemas/tweak.schema.json",
+  "title": "Tweak Definition",
+  "description": "Schema for a single tweak definition used by the WinOptimizer Core Engine.",
+  "type": "object",
+  "required": ["id", "name", "description", "category", "commands", "risk", "reversible", "compatible_with_vanguard", "requires_restart"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+$",
+      "description": "Unique identifier for the tweak (lowercase-kebab-case)."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name."
+    },
+    "description": {
+      "type": "string",
+      "description": "What this tweak does."
+    },
+    "category": {
+      "type": "string",
+      "enum": ["privacy", "services", "network", "gaming", "appearance", "startmenu-taskbar", "explorer"],
+      "description": "Domain category."
+    },
+    "commands": {
+      "type": "object",
+      "required": ["apply", "revert"],
+      "properties": {
+        "apply": {
+          "type": "string",
+          "description": "PowerShell script block or command to apply the tweak."
+        },
+        "revert": {
+          "type": "string",
+          "description": "PowerShell script block or command to revert the tweak."
+        }
+      }
+    },
+    "risk": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Risk level: low=cosmetic, medium=may affect functionality, high=critical system change."
+    },
+    "reversible": {
+      "type": "boolean",
+      "description": "Whether the tweak can be reliably reverted."
+    },
+    "compatible_with_vanguard": {
+      "type": "boolean",
+      "description": "Whether this tweak is safe to use when Vanguard anti-cheat is installed."
+    },
+    "requires_restart": {
+      "type": "boolean",
+      "description": "Whether a system restart is required after applying."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional tags for filtering."
+    }
+  }
+}

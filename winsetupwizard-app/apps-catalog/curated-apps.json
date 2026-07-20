@@ -1,0 +1,110 @@
+{
+  "description": "Catálogo curado de apps instalables via winget. El usuario puede marcar/desmarcar en el wizard.",
+  "apps": [
+    {
+      "id": "Google.Chrome",
+      "name": "Google Chrome",
+      "description": "Navegador web rápido y seguro",
+      "category": "Navegador",
+      "recommended": true
+    },
+    {
+      "id": "Mozilla.Firefox",
+      "name": "Mozilla Firefox",
+      "description": "Navegador web open source, enfocado en privacidad",
+      "category": "Navegador",
+      "recommended": false
+    },
+    {
+      "id": "7zip.7zip",
+      "name": "7-Zip",
+      "description": "Compresor/descompresor de archivos gratuito",
+      "category": "Utilidades",
+      "recommended": true
+    },
+    {
+      "id": "Discord.Discord",
+      "name": "Discord",
+      "description": "Comunicación por voz, video y texto para gamers",
+      "category": "Comunicación",
+      "recommended": true
+    },
+    {
+      "id": "Microsoft.VisualStudioCode",
+      "name": "VS Code",
+      "description": "Editor de código ligero y extensible",
+      "category": "Desarrollo",
+      "recommended": false
+    },
+    {
+      "id": "VideoLAN.VLC",
+      "name": "VLC Media Player",
+      "description": "Reproductor multimedia que reproduce casi todo",
+      "category": "Multimedia",
+      "recommended": true
+    },
+    {
+      "id": "Valve.Steam",
+      "name": "Steam",
+      "description": "Plataforma de juegos y distribución digital",
+      "category": "Juegos",
+      "recommended": true
+    },
+    {
+      "id": "OBSProject.OBSStudio",
+      "name": "OBS Studio",
+      "description": "Software de grabación y streaming",
+      "category": "Multimedia",
+      "recommended": false
+    },
+    {
+      "id": "Nvidia.GeForceExperience",
+      "name": "NVIDIA GeForce Experience",
+      "description": "Optimización de juegos y drivers NVIDIA",
+      "category": "Juegos",
+      "recommended": false
+    },
+    {
+      "id": "Notepad++.Notepad++",
+      "name": "Notepad++",
+      "description": "Editor de texto avanzado para Windows",
+      "category": "Utilidades",
+      "recommended": false
+    },
+    {
+      "id": "GIMP.GIMP",
+      "name": "GIMP",
+      "description": "Editor de imágenes gratuito y open source",
+      "category": "Multimedia",
+      "recommended": false
+    },
+    {
+      "id": "Microsoft.PowerShell",
+      "name": "PowerShell 7",
+      "description": "Shell y lenguaje de scripting moderno",
+      "category": "Desarrollo",
+      "recommended": true
+    },
+    {
+      "id": "startallback.StartAllBack",
+      "name": "StartAllBack",
+      "description": "Restaura el menú Inicio clásico de Windows",
+      "category": "Utilidades",
+      "recommended": false
+    },
+    {
+      "id": "TeamViewer.TeamViewer",
+      "name": "TeamViewer",
+      "description": "Acceso remoto y soporte técnico",
+      "category": "Comunicación",
+      "recommended": false
+    },
+    {
+      "id": "Spotify.Spotify",
+      "name": "Spotify",
+      "description": "Música y podcasts en streaming",
+      "category": "Multimedia",
+      "recommended": false
+    }
+  ]
+}

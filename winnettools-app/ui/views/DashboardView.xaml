@@ -1,0 +1,109 @@
+<Page x:Class="WinNetTools.UI.Views.DashboardView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgPrimaryBrush}"
+      Foreground="{StaticResource TextPrimaryBrush}"
+      ScrollViewer.VerticalScrollBarVisibility="Auto">
+    <StackPanel Margin="24">
+        <TextBlock Text="{StaticResource NetworkHealth}" FontSize="22" FontWeight="Bold" Margin="0,0,0,16"/>
+
+        <!-- Connection type and overall health -->
+        <Border Background="{StaticResource BgCardBrush}" CornerRadius="8" Padding="16" Margin="0,0,0,16">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock x:Name="ConnectionTypeText" FontSize="16" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="ConnectionDetailText" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,4,0,0"/>
+                </StackPanel>
+                <Border x:Name="HealthIndicator" Grid.Column="1" Width="100" Height="32" CornerRadius="4" Background="{StaticResource SuccessBrush}">
+                    <TextBlock x:Name="HealthText" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Wi-Fi warning -->
+        <Border x:Name="WifiWarning" Background="#1AFF9800" CornerRadius="8" Padding="12" Margin="0,0,0,16" Visibility="Collapsed">
+            <TextBlock x:Name="WifiWarningText" Text="{StaticResource WiFiWarning}" Foreground="{StaticResource WarningBrush}" TextWrapping="Wrap"/>
+        </Border>
+
+        <!-- Nagle suggestion -->
+        <Border x:Name="NagleSuggestionBox" Background="#1A0D98E8" CornerRadius="8" Padding="12" Margin="0,0,0,16" Visibility="Collapsed">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="NagleSuggestionText" Text="{StaticResource NagleSuggestion}" Foreground="{StaticResource AccentBrush}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" Content="{StaticResource OpenOptimizer}" Style="{StaticResource PrimaryButton}" Click="OpenOptimizerNagle" Margin="12,0,0,0"/>
+            </Grid>
+        </Border>
+
+        <!-- Delivery Optimization warning -->
+        <Border x:Name="DoWarning" Background="#1AFF9800" CornerRadius="8" Padding="12" Margin="0,0,0,16" Visibility="Collapsed">
+            <TextBlock x:Name="DoWarningText" Text="{StaticResource DeliveryOptimizationWarning}" Foreground="{StaticResource WarningBrush}" TextWrapping="Wrap"/>
+        </Border>
+
+        <!-- Ping test controls -->
+        <Grid Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{StaticResource PingLatency}" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" x:Name="RunPingBtn" Content="{StaticResource RunTest}" Style="{StaticResource PrimaryButton}" Click="RunPingTest" IsEnabled="True"/>
+        </Grid>
+
+        <!-- Loading indicator -->
+        <TextBlock x:Name="LoadingText" Text="Ejecutando pruebas..." Foreground="{StaticResource TextSecondaryBrush}" Visibility="Collapsed" Margin="0,0,0,8"/>
+
+        <!-- Results table -->
+        <Border Background="{StaticResource BgCardBrush}" CornerRadius="8" Padding="0">
+            <ListView x:Name="PingResultsList" Background="Transparent" BorderThickness="0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="{StaticResource Target}" Width="140" DisplayMemberBinding="{Binding Target}"/>
+                        <GridViewColumn Header="{StaticResource Avg}" Width="70" DisplayMemberBinding="{Binding AvgLatencyMs}"/>
+                        <GridViewColumn Header="{StaticResource Min}" Width="70" DisplayMemberBinding="{Binding MinLatencyMs}"/>
+                        <GridViewColumn Header="{StaticResource Max}" Width="70" DisplayMemberBinding="{Binding MaxLatencyMs}"/>
+                        <GridViewColumn Header="{StaticResource Jitter}" Width="70" DisplayMemberBinding="{Binding JitterMs}"/>
+                        <GridViewColumn Header="{StaticResource Loss}" Width="70">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding PacketLossPercent}" Foreground="{Binding Status, Converter={x:Null}}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Status" Width="80">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="4" Padding="4,2" Margin="2">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Background" Value="{StaticResource SuccessBrush}"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Status}" Value="fair">
+                                                        <Setter Property="Background" Value="{StaticResource WarningBrush}"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Status}" Value="poor">
+                                                        <Setter Property="Background" Value="{StaticResource DangerBrush}"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Status}" Value="critical">
+                                                        <Setter Property="Background" Value="#880000"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock Text="{Binding Status}" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+    </StackPanel>
+</Page>

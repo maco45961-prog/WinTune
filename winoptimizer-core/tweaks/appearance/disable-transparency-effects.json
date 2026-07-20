@@ -1,0 +1,15 @@
+{
+  "id": "disable-transparency-effects",
+  "name": "Deshabilitar Efectos de Transparencia",
+  "description": "Deshabilita las transparencias de la interfaz (Aero Glass), reduciendo el consumo de GPU en desktops de bajo recursos.",
+  "category": "appearance",
+  "commands": {
+    "apply": "Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize' -Name 'EnableTransparency' -Value 0 -Type DWord",
+    "revert": "Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize' -Name 'EnableTransparency' -Value 1 -Type DWord"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["appearance", "transparency", "gpu", "visual"]
+}

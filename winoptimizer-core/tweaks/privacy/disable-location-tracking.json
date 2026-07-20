@@ -1,0 +1,15 @@
+{
+  "id": "disable-location-tracking",
+  "name": "Deshabilitar Rastreo de Ubicación",
+  "description": "Desactiva el servicio de rastreo de ubicación de Windows y la capacidad de las apps de acceder a la ubicación del dispositivo.",
+  "category": "privacy",
+  "commands": {
+    "apply": "Set-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors' -Name 'DisableLocation' -Value 1 -Type DWord; Set-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors' -Name 'DisableWindowsLocationProvider' -Value 1 -Type DWord; Set-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors' -Name 'DisableLocationScripting' -Value 1 -Type DWord; Stop-Service -Name 'lfsvc' -Force -ErrorAction SilentlyContinue; Set-Service -Name 'lfsvc' -StartupType Disabled",
+    "revert": "Remove-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors' -Name 'DisableLocation' -ErrorAction SilentlyContinue; Remove-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors' -Name 'DisableWindowsLocationProvider' -ErrorAction SilentlyContinue; Remove-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors' -Name 'DisableLocationScripting' -ErrorAction SilentlyContinue; Set-Service -Name 'lfsvc' -StartupType Manual; Start-Service -Name 'lfsvc' -ErrorAction SilentlyContinue"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["privacy", "location", "tracking", "services"]
+}

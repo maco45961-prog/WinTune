@@ -1,0 +1,118 @@
+name: Release — Core Engine
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+env:
+  DOTNET_VERSION: '8.0.x'
+
+jobs:
+  validate:
+    name: Validate Core Module
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Module Manifest
+        shell: pwsh
+        working-directory: winoptimizer-core
+        run: |
+          Test-ModuleManifest -Path ./WinOptimizer.Core.psd1
+          Write-Output "Module manifest is valid"
+
+      - name: Run Pester Tests
+        shell: pwsh
+        working-directory: winoptimizer-core
+        run: |
+          Install-Module -Name Pester -Force -Scope CurrentUser -SkipPublisherCheck -MinimumVersion 5.0
+          $config = New-PesterConfiguration
+          $config.Run.Path = './tests'
+          $config.Output.Verbosity = 'Detailed'
+          Invoke-Pester -Configuration $config
+
+      - name: Run PSScriptAnalyzer
+        shell: pwsh
+        working-directory: winoptimizer-core
+        run: |
+          Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser -SkipPublisherCheck
+          Import-Module PSScriptAnalyzer -Force
+          $results = Invoke-ScriptAnalyzer -Path ./engine -Recurse -Severity Error,Warning
+          if ($results) {
+            $results | Format-Table -AutoSize
+            Write-Error "PSScriptAnalyzer found $($results.Count) issue(s)"
+            exit 1
+          }
+          Write-Output "PSScriptAnalyzer: 0 issues"
+
+  package:
+    name: Package Core
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract version from tag
+        id: version
+        shell: bash
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_OUTPUT"
+
+      - name: Package core module
+        shell: pwsh
+        run: |
+          $version = "${{ steps.version.outputs.VERSION }}"
+          $source = "winoptimizer-core"
+          $zipName = "winoptimizer-core-v${version}.zip"
+
+          # Remove test and CI files from package
+          $tempDir = "core-staging"
+          Copy-Item -Path $source -Destination $tempDir -Recurse -Force
+          Remove-Item -Path "$tempDir/.github" -Recurse -Force -ErrorAction SilentlyContinue
+          Remove-Item -Path "$tempDir/tests" -Recurse -Force -ErrorAction SilentlyContinue
+
+          Compress-Archive -Path "$tempDir/*" -DestinationPath $zipName -Force
+          Remove-Item -Path $tempDir -Recurse -Force
+
+          Write-Output "Created: $zipName"
+
+      - name: Upload core artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-package
+          path: winoptimizer-core-v*.zip
+
+  release:
+    name: Create Release
+    needs: [validate, package]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download core artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: core-package
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: winoptimizer-core-v*.zip
+          name: "WinOptimizer Core ${{ github.ref_name }}"
+          body: |
+            ## WinOptimizer Core ${{ github.ref_name }}
+
+            PowerShell module — core engine for the WinOptimizer ecosystem.
+
+            ### Installation
+            1. Download `winoptimizer-core-v*.zip`
+            2. Extract to a folder (e.g. `C:\winoptimizer-core`)
+            3. Set the environment variable `WINOPTIMIZER_CORE_PATH` to that folder
+            4. Or place it as a sibling to any WinOptimizer app
+
+            ### Exported Functions
+            `Get-AvailableTweaks`, `Invoke-Tweak`, `Undo-Tweak`, `Apply-Profile`,
+            `New-SystemBackup`, `Restore-SystemBackup`, `Test-VanguardInstalled`,
+            `Test-VBSCompatibleTweak`, `Update-SystemState`, `Write-TweakLog`

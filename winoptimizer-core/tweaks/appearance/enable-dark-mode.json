@@ -1,0 +1,15 @@
+{
+  "id": "enable-dark-mode",
+  "name": "Habilitar Modo Oscuro",
+  "description": "Activa el tema oscuro en Windows y las apps del sistema. Reduce el consumo de energía en pantallas OLED y es más cómodo para los ojos.",
+  "category": "appearance",
+  "commands": {
+    "apply": "Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize' -Name 'AppsUseLightTheme' -Value 0 -Type DWord; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize' -Name 'SystemUsesLightTheme' -Value 0 -Type DWord",
+    "revert": "Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize' -Name 'AppsUseLightTheme' -Value 1 -Type DWord; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize' -Name 'SystemUsesLightTheme' -Value 1 -Type DWord"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["appearance", "theme", "dark-mode", "oled"]
+}

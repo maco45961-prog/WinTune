@@ -1,0 +1,40 @@
+<Application x:Class="WinOptimizer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="ui/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Default: Spanish -->
+                <ResourceDictionary Source="ui/i18n/es/Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- ═══ Dark Mode Colors ═══ -->
+            <Color x:Key="BgPrimary">#1a1a2e</Color>
+            <Color x:Key="BgSecondary">#16213e</Color>
+            <Color x:Key="BgCard">#0f3460</Color>
+            <Color x:Key="BgCardHover">#1a4a7a</Color>
+            <Color x:Key="AccentPrimary">#e94560</Color>
+            <Color x:Key="AccentGreen">#00d2a0</Color>
+            <Color x:Key="AccentYellow">#f5a623</Color>
+            <Color x:Key="AccentRed">#ff4757</Color>
+            <Color x:Key="TextPrimary">#e8e8e8</Color>
+            <Color x:Key="TextSecondary">#a0a0b0</Color>
+            <Color x:Key="TextMuted">#606070</Color>
+            <Color x:Key="BorderColor">#2a2a4a</Color>
+
+            <SolidColorBrush x:Key="BgPrimaryBrush" Color="{StaticResource BgPrimary}"/>
+            <SolidColorBrush x:Key="BgSecondaryBrush" Color="{StaticResource BgSecondary}"/>
+            <SolidColorBrush x:Key="BgCardBrush" Color="{StaticResource BgCard}"/>
+            <SolidColorBrush x:Key="BgCardHoverBrush" Color="{StaticResource BgCardHover}"/>
+            <SolidColorBrush x:Key="AccentPrimaryBrush" Color="{StaticResource AccentPrimary}"/>
+            <SolidColorBrush x:Key="AccentGreenBrush" Color="{StaticResource AccentGreen}"/>
+            <SolidColorBrush x:Key="AccentYellowBrush" Color="{StaticResource AccentYellow}"/>
+            <SolidColorBrush x:Key="AccentRedBrush" Color="{StaticResource AccentRed}"/>
+            <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}"/>
+            <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondary}"/>
+            <SolidColorBrush x:Key="TextMutedBrush" Color="{StaticResource TextMuted}"/>
+            <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

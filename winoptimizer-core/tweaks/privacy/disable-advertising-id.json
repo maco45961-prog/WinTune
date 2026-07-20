@@ -1,0 +1,15 @@
+{
+  "id": "disable-advertising-id",
+  "name": "Deshabilitar ID de Publicidad",
+  "description": "Desactiva el identificador de publicidad de Windows, impidiendo que las apps rastreen al usuario para publicidad personalizada.",
+  "category": "privacy",
+  "commands": {
+    "apply": "Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo' -Name 'Enabled' -Value 0 -Type DWord; New-Item -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo' -Force | Out-Null; Set-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo' -Name 'DisabledByGroupPolicy' -Value 1 -Type DWord",
+    "revert": "Remove-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo' -Name 'Enabled' -ErrorAction SilentlyContinue; Remove-ItemProperty -Path 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo' -Name 'DisabledByGroupPolicy' -ErrorAction SilentlyContinue"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["privacy", "advertising", "tracking"]
+}

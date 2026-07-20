@@ -1,0 +1,15 @@
+{
+  "id": "disable-animations",
+  "name": "Deshabilitar Animaciones de Windows",
+  "description": "Desactiva todas las animaciones de la interfaz (minimizar, maximizar, transiciones). Reduce carga de GPU y hace que la UI se sienta más rápida.",
+  "category": "appearance",
+  "commands": {
+    "apply": "Set-ItemProperty -Path 'HKCU:\\Control Panel\\Desktop' -Name 'UserPreferencesMask' -Value ([byte[]](0x90,0x12,0x03,0x80,0x10,0x00,0x00,0x00)) -Type Binary; Set-ItemProperty -Path 'HKCU:\\Control Panel\\Desktop\\WindowMetrics' -Name 'MinAnimate' -Value '0'; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name 'TaskbarAnimations' -Value 0 -Type DWord; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\DWM' -Name 'EnableAeroPeek' -Value 0 -Type DWord; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\DWM' -Name 'AlwaysHibernateThumbnails' -Value 0 -Type DWord",
+    "revert": "Remove-ItemProperty -Path 'HKCU:\\Control Panel\\Desktop' -Name 'UserPreferencesMask' -ErrorAction SilentlyContinue; Set-ItemProperty -Path 'HKCU:\\Control Panel\\Desktop\\WindowMetrics' -Name 'MinAnimate' -Value '1'; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name 'TaskbarAnimations' -Value 1 -Type DWord; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\DWM' -Name 'EnableAeroPeek' -Value 1 -Type DWord; Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\DWM' -Name 'AlwaysHibernateThumbnails' -Value 1 -Type DWord"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["appearance", "animations", "performance", "gpu"]
+}

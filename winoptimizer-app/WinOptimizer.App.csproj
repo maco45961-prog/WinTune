@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>ui\app.ico</ApplicationIcon>
+    <AssemblyName>WinOptimizer</AssemblyName>
+    <RootNamespace>WinOptimizer</RootNamespace>
+    <Version>1.0.0</Version>
+    <Authors>WinOptimizer Contributors</Authors>
+    <Description>Desktop UI for the WinOptimizer ecosystem</Description>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.4.1" />
+  </ItemGroup>
+
+</Project>

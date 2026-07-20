@@ -1,0 +1,16 @@
+{
+  "name": "debloat-agresivo",
+  "description": "Perfil de desbloat agresivo: incluye todo lo del estándar más tweaks de red, explorer y servicios avanzados. Requiere reinicio parcial.",
+  "target_audience": "Usuarios avanzados que quieren máximo control",
+  "risk_level": "medium",
+  "tweak_ids": [
+    "disable-telemetry",
+    "disable-cortana",
+    "disable-windows-search-indexer",
+    "disable-transparency-effects",
+    "show-file-extension",
+    "disable-nagle-algorithm"
+  ],
+  "estimated_restart_required": true,
+  "vanguard_compatible": true
+}

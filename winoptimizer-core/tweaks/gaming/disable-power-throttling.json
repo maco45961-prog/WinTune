@@ -1,0 +1,15 @@
+{
+  "id": "disable-power-throttling",
+  "name": "Deshabilitar Power Throttling",
+  "description": "Desactiva el limitado de potencia de Windows que reduce el rendimiento de procesos en background. Mejora FPS en juegos y rendimiento en apps de productividad.",
+  "category": "gaming",
+  "commands": {
+    "apply": "New-Item -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Power\\PowerThrottling' -Force | Out-Null; Set-ItemProperty -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Power\\PowerThrottling' -Name 'PowerThrottlingOff' -Value 1 -Type DWord",
+    "revert": "Remove-ItemProperty -Path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Power\\PowerThrottling' -Name 'PowerThrottlingOff' -ErrorAction SilentlyContinue"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["gaming", "power", "performance", "cpu"]
+}

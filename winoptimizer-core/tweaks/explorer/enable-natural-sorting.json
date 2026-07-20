@@ -1,0 +1,15 @@
+{
+  "id": "enable-natural-sorting",
+  "name": "Habilitar Ordenamiento Natural",
+  "description": "Activa el ordenamiento natural para archivos (file1, file2, file10 en vez de file1, file10, file2). Más intuitivo para navegar.",
+  "category": "explorer",
+  "commands": {
+    "apply": "Set-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name 'NoStrCmpLogical' -Value 0 -Type DWord",
+    "revert": "Remove-ItemProperty -Path 'HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name 'NoStrCmpLogical' -ErrorAction SilentlyContinue"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["explorer", "sorting", "ui"]
+}

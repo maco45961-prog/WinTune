@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <AssemblyName>WinGameModeDaemon</AssemblyName>
+    <RootNamespace>WinGameModeDaemon</RootNamespace>
+    <Version>1.0.0</Version>
+    <Authors>WinOptimizer Contributors</Authors>
+    <Description>Background daemon that auto-applies gaming profiles when games are detected</Description>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.4.1" />
+  </ItemGroup>
+
+</Project>

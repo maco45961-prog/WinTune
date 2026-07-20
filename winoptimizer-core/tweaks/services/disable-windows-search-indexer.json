@@ -1,0 +1,15 @@
+{
+  "id": "disable-windows-search-indexer",
+  "name": "Deshabilitar Windows Search Indexer",
+  "description": "Deshabilita el servicio de indexación de Windows Search, liberando disco I/O y CPU. Útil en SSDs donde el impacto es mínimo.",
+  "category": "services",
+  "commands": {
+    "apply": "Stop-Service -Name 'WSearch' -Force -ErrorAction SilentlyContinue; Set-Service -Name 'WSearch' -StartupType Disabled",
+    "revert": "Set-Service -Name 'WSearch' -StartupType Automatic; Start-Service -Name 'WSearch' -ErrorAction SilentlyContinue"
+  },
+  "risk": "low",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["services", "search", "indexing", "performance"]
+}

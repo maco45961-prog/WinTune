@@ -1,0 +1,15 @@
+{
+  "id": "disable-bits-background",
+  "name": "Deshabilitar BITS en Background",
+  "description": "Deshabilita la transferencia inteligente en segundo plano (BITS) para evitar que Windows descargue actualizaciones y other content en background.",
+  "category": "services",
+  "commands": {
+    "apply": "Stop-Service -Name 'BITS' -Force -ErrorAction SilentlyContinue; Set-Service -Name 'BITS' -StartupType Disabled",
+    "revert": "Set-Service -Name 'BITS' -StartupType Manual; Start-Service -Name 'BITS' -ErrorAction SilentlyContinue"
+  },
+  "risk": "medium",
+  "reversible": true,
+  "compatible_with_vanguard": true,
+  "requires_restart": false,
+  "tags": ["services", "network", "background", "updates"]
+}

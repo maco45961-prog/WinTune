@@ -1,0 +1,56 @@
+<Page x:Class="WinNetTools.UI.Views.ProcessesView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource BgPrimaryBrush}"
+      Foreground="{StaticResource TextPrimaryBrush}">
+    <StackPanel Margin="24">
+        <Grid Margin="0,0,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{StaticResource Processes}" FontSize="22" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" x:Name="RefreshBtn" Content="{StaticResource RefreshProcesses}" Style="{StaticResource PrimaryButton}" Click="RefreshProcessList" IsEnabled="True"/>
+        </Grid>
+
+        <!-- Delivery Optimization warning -->
+        <Border x:Name="DoWarning" Background="#1AFF9800" CornerRadius="8" Padding="12" Margin="0,0,0,12" Visibility="Collapsed">
+            <TextBlock x:Name="DoWarningText" Text="{StaticResource DeliveryOptimizationWarning}" Foreground="{StaticResource WarningBrush}" TextWrapping="Wrap"/>
+        </Border>
+
+        <TextBlock x:Name="ProcessLoading" Text="Escaneando procesos de red..." Foreground="{StaticResource TextSecondaryBrush}" Visibility="Collapsed" Margin="0,0,0,8"/>
+
+        <Border Background="{StaticResource BgCardBrush}" CornerRadius="8" Padding="0">
+            <ListView x:Name="ProcessList" Background="Transparent" BorderThickness="0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="PID" Width="80" DisplayMemberBinding="{Binding Pid}"/>
+                        <GridViewColumn Header="Proceso" Width="200" DisplayMemberBinding="{Binding ProcessName}"/>
+                        <GridViewColumn Header="Ventana" Width="250" DisplayMemberBinding="{Binding WindowTitle}"/>
+                        <GridViewColumn Header="Delivery Opt." Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="4" Padding="4,2" Background="{StaticResource DangerBrush}" Visibility="{Binding IsDeliveryOptimization, Converter={x:Null}}">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsDeliveryOptimization}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock Text="⚠ ACTIVO" Foreground="White" FontWeight="Bold" FontSize="11"/>
+                                    </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+
+        <TextBlock x:Name="EmptyText" Text="No se detectaron procesos de red activos." Foreground="{StaticResource TextMutedBrush}" Margin="0,12,0,0" Visibility="Collapsed"/>
+    </StackPanel>
+</Page>

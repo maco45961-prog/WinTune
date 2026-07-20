@@ -1,0 +1,100 @@
+<UserControl x:Class="WinOptimizer.UI.LogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+
+    <Grid Margin="40,32">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+            <TextBlock Text="{StaticResource LogTitle}" FontSize="28" FontWeight="Bold"
+                       Foreground="{StaticResource TextPrimaryBrush}"/>
+        </StackPanel>
+
+        <!-- Log Table -->
+        <Border Grid.Row="1" Background="{StaticResource BgCardBrush}" CornerRadius="12"
+                Padding="0" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Table Header -->
+                <Border Grid.Row="0" Background="{StaticResource BgSecondaryBrush}" Padding="16,10" CornerRadius="12,12,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{StaticResource LogTime}" FontWeight="SemiBold"
+                                   FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+                        <TextBlock Grid.Column="1" Text="{StaticResource LogTweak}" FontWeight="SemiBold"
+                                   FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+                        <TextBlock Grid.Column="2" Text="Acción" FontWeight="SemiBold"
+                                   FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+                        <TextBlock Grid.Column="3" Text="{StaticResource LogStatus}" FontWeight="SemiBold"
+                                   FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+                        <TextBlock Grid.Column="4" Text="Undo" FontWeight="SemiBold"
+                                   FontSize="12" Foreground="{StaticResource TextSecondaryBrush}"/>
+                    </Grid>
+                </Border>
+
+                <!-- Empty state -->
+                <TextBlock Grid.Row="1" x:Name="EmptyText" Text="{StaticResource LogEmpty}"
+                           FontSize="14" Foreground="{StaticResource TextMutedBrush}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,40,0,0"/>
+
+                <!-- Log entries -->
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" x:Name="LogScroll">
+                    <StackPanel x:Name="LogEntriesPanel"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
+        <!-- Undo All Button -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button x:Name="UndoAllBtn" Content="{StaticResource UndoAll}" Style="{StaticResource UndoAllButtonStyle}"
+                    Click="UndoAll_Click" IsEnabled="False"/>
+        </StackPanel>
+    </Grid>
+
+    <UserControl.Resources>
+        <Style x:Key="UndoAllButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource AccentRedBrush}"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Padding" Value="20,8"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AccentRedBrush}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="UndoSmallButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource AccentRedBrush}"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Padding" Value="8,2"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AccentRedBrush}"/>
+        </Style>
+    </UserControl.Resources>
+</UserControl>

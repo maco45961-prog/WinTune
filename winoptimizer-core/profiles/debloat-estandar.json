@@ -1,0 +1,15 @@
+{
+  "name": "debloat-estandar",
+  "description": "Perfil de desbloat estándar: desactiva telemetría, Cortana, servicios innecesarios y mejora la privacidad básica. Seguro para uso diario.",
+  "target_audience": "Usuarios generales",
+  "risk_level": "low",
+  "tweak_ids": [
+    "disable-telemetry",
+    "disable-cortana",
+    "disable-windows-search-indexer",
+    "disable-transparency-effects",
+    "show-file-extension"
+  ],
+  "estimated_restart_required": false,
+  "vanguard_compatible": true
+}

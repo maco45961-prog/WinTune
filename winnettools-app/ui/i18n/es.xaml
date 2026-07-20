@@ -1,0 +1,41 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Spanish i18n -->
+    <s:String x:Key="AppTitle">WinNetTools — Diagnóstico de Red</s:String>
+    <s:String x:Key="Dashboard">Panel</s:String>
+    <s:String x:Key="Traceroute">Traceruta</s:String>
+    <s:String x:Key="DNS">Comparar DNS</s:String>
+    <s:String x:Key="Processes">Procesos de Red</s:String>
+    <s:String x:Key="Report">Exportar Reporte</s:String>
+    <s:String x:Key="PingLatency">Ping / Jitter / Pérdida de Paquetes</s:String>
+    <s:String x:Key="ConnectionType">Tipo de Conexión</s:String>
+    <s:String x:Key="NetworkHealth">Salud de Red</s:String>
+    <s:String x:Key="Good">Buena</s:String>
+    <s:String x:Key="Fair">Regular</s:String>
+    <s:String x:Key="Poor">Mala</s:String>
+    <s:String x:Key="Critical">Crítica</s:String>
+    <s:String x:Key="Target">Destino</s:String>
+    <s:String x:Key="Avg">Prom</s:String>
+    <s:String x:Key="Min">Mín</s:String>
+    <s:String x:Key="Max">Máx</s:String>
+    <s:String x:Key="Jitter">Jitter</s:String>
+    <s:String x:Key="Loss">Pérdida</s:String>
+    <s:String x:Key="Hop">Salto</s:String>
+    <s:String x:Key="Address">Dirección</s:String>
+    <s:String x:Key="Latency">Latencia</s:String>
+    <s:String x:Key="RunTest">Ejecutar Test</s:String>
+    <s:String x:Key="RunTraceroute">Ejecutar Traceruta</s:String>
+    <s:String x:Key="ResolveDNS">Resolver DNS</s:String>
+    <s:String x:Key="CompareDNS">Comparar Servidores DNS</s:String>
+    <s:String x:Key="RefreshProcesses">Actualizar Procesos</s:String>
+    <s:String x:Key="GenerateReport">Generar Reporte</s:String>
+    <s:String x:Key="ReportSaved">Reporte guardado en:</s:String>
+    <s:String x:Key="WiFiWarning">Wi-Fi introduce jitter variable que ningún tweak de software soluciona del todo. Considera usar cable.</s:String>
+    <s:String x:Key="NagleSuggestion">El algoritmo Nagle está activo — considera desactivarlo desde WinOptimizer para menor latencia.</s:String>
+    <s:String x:Key="DnsSuggestion">Tu DNS actual es más lento que alternativas — considera cambiarlo desde WinOptimizer.</s:String>
+    <s:String x:Key="DeliveryOptimizationWarning">Delivery Optimization (P2P de Windows Update) está activo y puede consumir ancho de banda.</s:String>
+    <s:String x:Key="OpenOptimizer">Abrir en Optimizer</s:String>
+
+</ResourceDictionary>

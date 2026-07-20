@@ -1,0 +1,10 @@
+{
+  "executables": [
+    "VALORANT.exe",
+    "VALORANT-Win64-Shipping.exe"
+  ],
+  "profileToApply": "gaming-competitivo-lowend",
+  "enabled": true,
+  "notificationsEnabled": true,
+  "startWithWindows": false
+}

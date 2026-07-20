@@ -1,0 +1,42 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+
+    <s:String x:Key="AppTitle">WinSetupWizard — Setup Wizard</s:String>
+    <s:String x:Key="Step">Step</s:String>
+    <s:String x:Key="Of">of</s:String>
+    <s:String x:Key="Back">Back</s:String>
+    <s:String x:Key="Next">Next</s:String>
+    <s:String x:Key="Cancel">Cancel</s:String>
+    <s:String x:Key="Finish">Finish</s:String>
+    <s:String x:Key="WelcomeTitle">Welcome to WinSetupWizard!</s:String>
+    <s:String x:Key="WelcomeDesc">This wizard will guide you step by step to get your freshly formatted PC ready for gaming in under 15 minutes. We'll detect your hardware, apply optimal settings, install drivers and essential apps.</s:String>
+    <s:String x:Key="HardwareDetected">Hardware Detected</s:String>
+    <s:String x:Key="RecommendedProfile">Recommended Profile</s:String>
+    <s:String x:Key="SelectProfile">Select Your Profile</s:String>
+    <s:String x:Key="ProfileDesc">Choose the optimization level you want to apply to your system</s:String>
+    <s:String x:Key="DriverInstall">Driver Installation</s:String>
+    <s:String x:Key="DriverDesc">Download official drivers for your hardware from manufacturer websites. We never auto-download — review the links and decide.</s:String>
+    <s:String x:Key="AppInstall">App Installation</s:String>
+    <s:String x:Key="AppDesc">Select apps to install automatically via winget</s:String>
+    <s:String x:Key="ApplyProfileStep">Applying Optimization</s:String>
+    <s:String x:Key="ApplyProfileDesc">We'll apply the selected profile using the WinOptimizer Core Engine. A restore point will be created automatically.</s:String>
+    <s:String x:Key="Summary">Summary</s:String>
+    <s:String x:Key="SummaryDesc">Here's what was done in this session</s:String>
+    <s:String x:Key="Cpu">CPU</s:String>
+    <s:String x:Key="Gpu">GPU</s:String>
+    <s:String x:Key="Ram">RAM</s:String>
+    <s:String x:Key="Disk">Disk</s:String>
+    <s:String x:Key="Chassis">Type</s:String>
+    <s:String x:Key="Desktop">Desktop PC</s:String>
+    <s:String x:Key="Laptop">Laptop</s:String>
+    <s:String x:Key="Download">Open download page</s:String>
+    <s:String x:Key="InstallApps">Install Selected Apps</s:String>
+    <s:String x:Key="ApplyNow">Apply Profile Now</s:String>
+    <s:String x:Key="WingetNotAvailable">⚠️ winget is not available on this system. Apps cannot be installed automatically.</s:String>
+    <s:String x:Key="RestartNeeded">⚠️ This profile requires a restart for some changes to take effect.</s:String>
+    <s:String x:Key="OpenOptimizer">Open WinOptimizer for fine tuning</s:String>
+    <s:String x:Key="WhatWasDone">What was done</s:String>
+    <s:String x:Key="WhatToDoNext">What to do manually</s:String>
+
+</ResourceDictionary>
